@@ -42,9 +42,9 @@ pipeline {
                     git config user.email "rober29@gmail.com"
                     git config user.name "rober29"
                     BUILD_NUMBER=${BUILD_NUMBER}
-                    ImageTag=helloworld-python:$(cat java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml | grep image | awk -F ":" '{print $3}')
-                    sed -i "s/${ImageTag}/helloworld-python:${BUILD_NUMBER}/g" manifests/deployment.yml
-                    git add manifests/deployment.yml
+                    ImageTag=helloworld-python:$(cat kubernetes/deployment.yml | grep image | awk -F ":" '{print $3}')
+                    sed -i "s/${ImageTag}/helloworld-python:${BUILD_NUMBER}/g" kubernetes/deployment.yml
+                    git add kubernetes/deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                 '''
