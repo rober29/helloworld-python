@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: webapp:1.0
+        image: rober29/helloworld-python:1
         ports:
         - containerPort: 5000
