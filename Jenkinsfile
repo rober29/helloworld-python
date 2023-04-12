@@ -7,10 +7,6 @@ pipeline {
         //git branch: 'main', url: 'https://github.com/rober29/helloworld-python.git'
       }
     }
-    stage('Static Code Analysis') {
-      environment {
-        SONAR_URL = "http://localhost:9000"
-      }
     stage('SonarQube Analysis') {
        steps {
             sh 'sonar-scanner \
