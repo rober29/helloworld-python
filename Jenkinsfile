@@ -24,7 +24,6 @@ pipeline {
             sh 'docker push ${DOCKER_IMAGE}'
             }
         }
-      }
     }
     stage('Update Deployment File') {
         environment {
