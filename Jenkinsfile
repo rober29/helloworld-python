@@ -9,7 +9,7 @@ pipeline {
     }
     stage('SonarQube Analysis') {
       steps {
-        sh 'sonar-scanner -Dsonar.projectKey=helloworld-python -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=7f551c9805e51c4c7e317186d60d1cab87bb97b1'
+        sh './sonar-scanner -Dsonar.projectKey=helloworld-python -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=7f551c9805e51c4c7e317186d60d1cab87bb97b1'
         }
     }
     stage('Build and Push Docker Image') {
