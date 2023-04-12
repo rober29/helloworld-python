@@ -26,6 +26,7 @@ pipeline {
                 dockerImage.push()
             }
         }
+      }
     }
     stage('Update Deployment File') {
         environment {
