@@ -11,11 +11,15 @@ pipeline {
       environment {
         SONAR_URL = "http://localhost:9000"
       }
-      steps {
-        withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-          sh 'cd src && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+    stage('SonarQube Analysis') {
+       steps {
+            sh 'sonar-scanner \
+                 -Dsonar.projectKey=helloworld-python \
+                 -Dsonar.sources=. \
+                 -Dsonar.host.url=http://localhost:9000 \
+                 -Dsonar.login=7f551c9805e51c4c7e317186d60d1cab87bb97b1'
         }
-      }
+     }
     }
     stage('Build and Push Docker Image') {
       environment {
